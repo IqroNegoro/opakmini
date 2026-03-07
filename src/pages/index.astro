@@ -1,17 +1,424 @@
 ---
-
+import Layout from "../layouts/index.astro"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Opak Mini - Rasakan Kelezatan Autentik">
+	<section id="home" class="hero-section">
+		<div class="container hero-container">
+			<div class="hero-content">
+				<div class="hero-badge">
+					<span>✨ Camilan Tradisional Terbaik</span>
+				</div>
+				<h1 class="hero-title font-outfit">
+					<span class="title-highlight">Opak Mini</span>
+				</h1>
+				<p class="hero-subtitle">
+					Rasakan opak mini yang tidak pernah kamu rasakan sebelumnya
+				</p>
+				<p class="hero-description">
+					Camilan tradisional dengan cita rasa modern yang menggugah selera. Dibuat dengan bahan pilihan dan resep turun temurun.
+				</p>
+				<div class="hero-cta">
+					<a href="#products" class="btn-primary">
+						Lihat Produk
+					</a>
+					<a href="https://wa.me/6283811020257?text=Halo%20Opak%20Mini%2C%20saya%20ingin%20memesan%20produk%20Anda" class="btn-secondary">
+						Pesan Sekarang
+					</a>
+				</div>
+			</div>
+			
+			<div class="hero-image">
+				<img src="/images/hero_image.png" alt="Opak Mini Product" class="hero-product-image" />
+			</div>
+		</div>
+		
+		<div class="scroll-indicator">
+			<span>Scroll</span>
+			<div class="scroll-arrow"></div>
+		</div>
+	</section>
+
+	<section id="products" class="gallery-section">
+		<div class="container">
+			<div class="gallery-grid">
+				<div class="gallery-item" data-product="gurih">
+					<img src="/images/gurih_product.png" alt="Opak Mini Gurih" class="gallery-image" />
+					<div class="gallery-overlay">
+						<h3 class="gallery-item-title">Gurih</h3>
+					</div>
+				</div>
+				
+				<div class="gallery-item" data-product="pedas">
+					<img src="/images/hot_product.png" alt="Opak Mini Pedas" class="gallery-image" />
+					<div class="gallery-overlay">
+						<h3 class="gallery-item-title">Pedas</h3>
+					</div>
+				</div>
+				
+				<div class="gallery-item" data-product="manis">
+					<img src="/images/sweet_product.png" alt="Opak Mini Manis" class="gallery-image" />
+					<div class="gallery-overlay">
+						<h3 class="gallery-item-title">Manis</h3>
+					</div>
+				</div>
+
+				<div class="gallery-item" data-product="ketan-bakar">
+					<img src="/images/ketan_bakar_product.png" alt="Opak Mini Ketan Bakar" class="gallery-image" />
+					<div class="gallery-overlay">
+						<h3 class="gallery-item-title">Ketan Bakar</h3>
+					</div>
+				</div>
+
+				<div class="gallery-item" data-product="kucai">
+					<img src="/images/kucai_product.png" alt="Opak Mini Kucai" class="gallery-image" />
+					<div class="gallery-overlay">
+						<h3 class="gallery-item-title">Kucai</h3>
+					</div>
+				</div>
+
+				<div class="gallery-item" data-product="pisang">
+					<img src="/images/pisang_product.png" alt="Opak Mini Pisang" class="gallery-image" />
+					<div class="gallery-overlay">
+						<h3 class="gallery-item-title">Pisang</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="product-modal" id="productModal">
+			<div class="modal-overlay"></div>
+			<div class="modal-content">
+				<button class="modal-close" aria-label="Tutup modal">&times;</button>
+				<div class="modal-body">
+					<div class="modal-image-container">
+						<img src="" alt="" class="modal-image" id="modalImage" />
+					</div>
+					<div class="modal-details">
+						<h3 class="modal-title font-outfit" id="modalTitle"></h3>
+						<p class="modal-price" id="modalPrice"></p>
+						<div class="modal-section">
+							<h4 class="modal-section-title">Deskripsi</h4>
+							<p class="modal-description" id="modalDescription"></p>
+						</div>
+						<div class="modal-section">
+							<h4 class="modal-section-title">Bahan</h4>
+							<ul class="modal-ingredients" id="modalIngredients"></ul>
+						</div>
+						<a href="/orders" class="modal-cta btn-primary" id="modalCta">Pesan Sekarang</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		const products = {
+			'gurih': {
+				name: 'Opak Mini Gurih',
+				price: 'Rp 15.000',
+				description: 'Opak mini dengan rasa gurih yang khas. Cocok untuk camilan sehari-hari dengan cita rasa tradisional yang autentik.',
+				ingredients: ['Beras pilihan', 'Garam', 'Bawang putih', 'Minyak kelapa'],
+				image: '/images/gurih_product.png'
+			},
+			'pedas': {
+				name: 'Opak Mini Pedas',
+				price: 'Rp 15.000',
+				description: 'Sensasi pedas yang menggigit dengan bumbu cabai pilihan. Sempurna untuk pecinta makanan pedas.',
+				ingredients: ['Beras pilihan', 'Cabai merah', 'Bawang putih', 'Garam', 'Minyak kelapa'],
+				image: '/images/hot_product.png'
+			},
+			'manis': {
+				name: 'Opak Mini Manis',
+				price: 'Rp 15.000',
+				description: 'Rasa manis yang pas dengan taburan gula kelapa asli. Camilan manis yang tidak membosankan.',
+				ingredients: ['Beras pilihan', 'Gula kelapa', 'Kelapa parut', 'Garam'],
+				image: '/images/sweet_product.png'
+			},
+			'ketan-bakar': {
+				name: 'Opak Mini Ketan Bakar',
+				price: 'Rp 18.000',
+				description: 'Varian premium dengan aroma ketan bakar yang menggugah selera. Tekstur renyah dengan rasa yang unik.',
+				ingredients: ['Ketan pilihan', 'Gula merah', 'Kelapa', 'Garam', 'Daun pandan'],
+				image: '/images/ketan_bakar_product.png'
+			},
+			'kucai': {
+				name: 'Opak Mini Kucai',
+				price: 'Rp 16.000',
+				description: 'Perpaduan gurih dengan aroma kucai segar. Varian unik yang wajib dicoba.',
+				ingredients: ['Beras pilihan', 'Kucai segar', 'Bawang putih', 'Garam', 'Minyak kelapa'],
+				image: '/images/kucai_product.png'
+			},
+			'pisang': {
+				name: 'Opak Mini Pisang',
+				price: 'Rp 16.000',
+				description: 'Rasa manis alami dari pisang pilihan. Camilan sehat dengan sentuhan tradisional.',
+				ingredients: ['Beras pilihan', 'Pisang raja', 'Gula kelapa', 'Garam'],
+				image: '/images/pisang_product.png'
+			}
+		};
+
+		const modal = document.getElementById('productModal');
+		const modalOverlay = modal?.querySelector('.modal-overlay');
+		const modalClose = modal?.querySelector('.modal-close');
+		const modalCta = document.getElementById('modalCta');
+		const galleryItems = document.querySelectorAll('.gallery-item');
+		let currentProductId = '';
+
+		function openModal(productId: string) {
+			const product = products[productId];
+			if (!product) return;
+
+			currentProductId = productId;
+
+			const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+			const modalTitle = document.getElementById('modalTitle');
+			const modalPrice = document.getElementById('modalPrice');
+			const modalDescription = document.getElementById('modalDescription');
+			const modalIngredients = document.getElementById('modalIngredients');
+
+			if (modalImage) {
+				modalImage.src = product.image;
+				modalImage.alt = product.name;
+			}
+			if (modalTitle) modalTitle.textContent = product.name;
+			if (modalPrice) modalPrice.textContent = product.price;
+			if (modalDescription) modalDescription.textContent = product.description;
+			if (modalIngredients) {
+				modalIngredients.innerHTML = product.ingredients.map(ing => `<li>${ing}</li>`).join('');
+			}
+
+			// Update WhatsApp link with product info
+			if (modalCta) {
+				const message = `Halo Opak Mini, saya ingin memesan *${product.name}* dengan harga ${product.price}`;
+				const whatsappUrl = `https://wa.me/6283811020257?text=${encodeURIComponent(message)}`;
+				modalCta.setAttribute('href', whatsappUrl);
+			}
+
+			modal?.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function closeModal() {
+			modal?.classList.remove('active');
+			document.body.style.overflow = '';
+			currentProductId = '';
+		}
+
+		galleryItems.forEach(item => {
+			item.addEventListener('click', () => {
+				const productId = item.getAttribute('data-product');
+				if (productId) openModal(productId);
+			});
+		});
+
+		modalOverlay?.addEventListener('click', closeModal);
+		modalClose?.addEventListener('click', closeModal);
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') closeModal();
+		});
+	</script>
+
+	<section class="journey-intro-section">
+		<div class="container">
+			<div class="journey-header">
+				<h2 class="journey-title font-outfit">Perjalanan Kelezatan</h2>
+				<p class="journey-subtitle">Kami membuatnya dengan hati-hati untuk memastikan Anda menikmati opak terbaik</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="journey-step-section">
+		<div class="container">
+			<div class="journey-step">
+				<div class="journey-image">
+					<img src="/images/hero_image.png" alt="Pemilihan Bahan" class="step-image" />
+				</div>
+				<div class="journey-content">
+					<div class="step-number">01</div>
+					<h3 class="step-title font-outfit">Pemilihan Bahan Berkualitas</h3>
+					<p class="step-description">
+						Kami memilih bahan baku terbaik dari petani lokal. Setiap bahan dipilih dengan teliti untuk memastikan kualitas dan kesegaran yang optimal.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="journey-step-section">
+		<div class="container">
+			<div class="journey-step journey-step-reverse">
+				<div class="journey-image">
+					<img src="/images/gurih_product.png" alt="Proses Pembuatan" class="step-image" />
+				</div>
+				<div class="journey-content">
+					<div class="step-number">02</div>
+					<h3 class="step-title font-outfit">Proses Pembuatan Tradisional</h3>
+					<p class="step-description">
+						Dibuat dengan resep turun temurun yang telah disempurnakan. Setiap langkah dilakukan dengan penuh perhatian untuk menghasilkan tekstur dan rasa yang sempurna.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="journey-step-section">
+		<div class="container">
+			<div class="journey-step">
+				<div class="journey-image">
+					<img src="/images/sweet_product.png" alt="Kontrol Kualitas" class="step-image" />
+				</div>
+				<div class="journey-content">
+					<div class="step-number">03</div>
+					<h3 class="step-title font-outfit">Kontrol Kualitas Ketat</h3>
+					<p class="step-description">
+						Setiap produk melewati pemeriksaan kualitas yang ketat sebelum sampai ke tangan Anda. Kami memastikan setiap gigitan memberikan pengalaman terbaik.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="testimonials" class="testimonials-section">
+		<div class="container">
+			<div class="testimonials-header">
+				<h2 class="testimonials-title font-outfit">Apa Kata Mereka</h2>
+				<p class="testimonials-subtitle">Testimoni dari pelanggan setia Opak Mini</p>
+			</div>
+
+			<div class="testimonials-grid">
+				<div class="testimonial-card">
+					<div class="testimonial-avatar">
+						<img src="https://i.pravatar.cc/150?img=1" alt="Budi Santoso" class="avatar-image" />
+					</div>
+					<div class="testimonial-content">
+						<div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+						<p class="testimonial-text">
+							"Opak Mini ini benar-benar enak! Rasa gurihnya pas banget, tidak terlalu asin. Jadi camilan favorit keluarga."
+						</p>
+						<div class="testimonial-author">
+							<p class="author-name font-outfit">Budi Santoso</p>
+							<p class="author-location">Jakarta</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-avatar">
+						<img src="https://i.pravatar.cc/150?img=5" alt="Siti Nurhaliza" class="avatar-image" />
+					</div>
+					<div class="testimonial-content">
+						<div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+						<p class="testimonial-text">
+							"Varian pedas nya juara! Pedasnya nendang tapi tidak bikin perut sakit. Cocok buat yang suka pedas."
+						</p>
+						<div class="testimonial-author">
+							<p class="author-name font-outfit">Siti Nurhaliza</p>
+							<p class="author-location">Bandung</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-avatar">
+						<img src="https://i.pravatar.cc/150?img=12" alt="Ahmad Rizki" class="avatar-image" />
+					</div>
+					<div class="testimonial-content">
+						<div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+						<p class="testimonial-text">
+							"Ketan bakarnya unik banget! Aromanya harum dan rasanya beda dari opak biasa. Recommended!"
+						</p>
+						<div class="testimonial-author">
+							<p class="author-name font-outfit">Ahmad Rizki</p>
+							<p class="author-location">Surabaya</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="location-section">
+		<div class="container">
+			<div class="location-header">
+				<h2 class="location-title font-outfit">Kunjungi Kami</h2>
+				<p class="location-subtitle">Temukan lokasi toko kami dan kunjungi langsung untuk pengalaman berbelanja yang lebih baik</p>
+			</div>
+
+			<div class="location-content">
+				<div class="location-info-box">
+					<h3 class="location-name font-outfit">Opak Mini Kagumi</h3>
+					<p class="location-address-text">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="location-icon">
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+						<span>
+							Jln. Komud Supadio, Cicukang II<br />
+							Kelurahan Husein Sastranegara No.76, RT.03/RW.07<br />
+							Husen Sastranegara, Kec. Cicendo<br />
+							Kota Bandung, Jawa Barat 40174
+						</span>
+					</p>
+					<a href="https://maps.app.goo.gl/s2zLpP9TVCNwwa1q8" target="_blank" rel="noopener noreferrer" class="location-map-link">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+						Buka di Google Maps
+					</a>
+				</div>
+				<div class="location-map-container">
+					<iframe 
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.822348088101!2d107.58263347441975!3d-6.911833667645282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7aa62f32d87%3A0x497d4f5b2ee564f1!2sOpak%20Mini%20Kagumi!5e0!3m2!1sid!2sid!4v1772911004595!5m2!1sid!2sid" 
+						width="100%" 
+						height="100%" 
+						style="border:0; border-radius: 1rem;" 
+						allowfullscreen="" 
+						loading="lazy" 
+						referrerpolicy="no-referrer-when-downgrade"
+						title="Lokasi Opak Mini Kagumi">
+					</iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-section">
+		<div class="cta-decoration cta-decoration-1"></div>
+		<div class="cta-decoration cta-decoration-2"></div>
+		<div class="cta-decoration cta-decoration-3"></div>
+		
+		<div class="container cta-container">
+			<div class="cta-content">
+				<h2 class="cta-title font-outfit">Siap Merasakan Kelezatannya?</h2>
+				<p class="cta-subtitle">
+					Pesan sekarang dan nikmati berbagai varian rasa Opak Mini yang menggugah selera
+				</p>
+				<div class="cta-features">
+					<div class="cta-feature">
+						<div class="feature-icon">🚚</div>
+						<p class="feature-text">Pengiriman Cepat</p>
+					</div>
+					<div class="cta-feature">
+						<div class="feature-icon">✨</div>
+						<p class="feature-text">Produk Fresh</p>
+					</div>
+					<div class="cta-feature">
+						<div class="feature-icon">💯</div>
+						<p class="feature-text">Kualitas Terjamin</p>
+					</div>
+				</div>
+				<a href="https://wa.me/6283811020257?text=Halo%20Opak%20Mini%2C%20saya%20ingin%20memesan%20produk%20Anda" class="cta-button-large">
+					<span>Pesan Sekarang</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

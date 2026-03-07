@@ -1,0 +1,142 @@
+---
+import '../styles/global.css';
+
+const { title = "Opak Mini - Mitra Terpercaya Anda", description = "Solusi profesional untuk kebutuhan bisnis Anda" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<title>{title}</title>
+	</head>
+	<body class="font-poppins">
+		<header class="header">
+			<div class="container">
+				<div class="header-content">
+					<a href="/" class="logo font-outfit">Opak Mini</a>
+					
+					<nav class="nav-desktop" aria-label="Navigasi utama">
+						<ul class="nav-list">
+							<li><a href="#home" class="nav-link">Beranda</a></li>
+							<li><a href="#products" class="nav-link">Produk</a></li>
+							<li><a href="#testimonials" class="nav-link">Testimoni</a></li>
+						</ul>
+					</nav>
+
+					<a href="https://wa.me/6283811020257?text=Halo%20Opak%20Mini%2C%20saya%20ingin%20memesan%20produk%20Anda" class="cta-button">Pesan</a>
+
+					<button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">
+						<span class="hamburger"></span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<aside class="sidebar" aria-label="Navigasi mobile">
+			<nav>
+				<ul class="sidebar-list">
+					<li><a href="#home" class="sidebar-link">Beranda</a></li>
+					<li><a href="#products" class="sidebar-link">Produk</a></li>
+					<li><a href="#testimonials" class="sidebar-link">Testimoni</a></li>
+					<li><a href="https://wa.me/6283811020257?text=Halo%20Opak%20Mini%2C%20saya%20ingin%20memesan%20produk%20Anda" class="sidebar-cta">Pesan</a></li>
+				</ul>
+			</nav>
+		</aside>
+
+		<div class="overlay"></div>
+
+		<main id="main-content">
+			<slot />
+		</main>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-section">
+						<h3 class="footer-title font-outfit">Opak Mini</h3>
+						<p class="footer-description">Mitra terpercaya Anda untuk produk berkualitas dan layanan terbaik.</p>
+					</div>
+
+					<div class="footer-section">
+						<h4 class="footer-heading">Tautan Cepat</h4>
+						<ul class="footer-links">
+							<li><a href="/">Beranda</a></li>
+							<li><a href="/product">Produk</a></li>
+							<li><a href="/contact">Kontak</a></li>
+							<li><a href="/orders">Pesan</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-section">
+						<h4 class="footer-heading">Kontak</h4>
+						<ul class="footer-links">
+							<li><a href="mailto:ratnayulia4969@gmail.com">ratnayulia4969@gmail.com</a></li>
+							<li><a href="tel:+6283811020257">0838 1102 0257</a></li>
+							<li>A.N Ratna Yulia</li>
+						</ul>
+					</div>
+
+					<div class="footer-section">
+						<h4 class="footer-heading">Ikuti Kami</h4>
+						<ul class="footer-links">
+							<li>
+								<a href="https://www.instagram.com/ominbdg/" target="_blank" rel="noopener noreferrer" class="social-link">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+										<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+										<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+									</svg>
+									Instagram
+								</a>
+							</li>
+							<li>
+								<a href="https://www.threads.com/@ominbdg?xmt=AQF0dWvER8prduniCOtTePjJ-EMCbKB2zOqeimwujB3g0mw" target="_blank" rel="noopener noreferrer" class="social-link">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+										<path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c1.66 0 3.16-.67 4.24-1.76"></path>
+										<path d="M16 12c0-2.21-1.79-4-4-4"></path>
+									</svg>
+									Threads
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>&copy; {new Date().getFullYear()} Opak Mini. Hak cipta dilindungi.</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			const menuToggle = document.querySelector('.menu-toggle');
+			const sidebar = document.querySelector('.sidebar');
+			const overlay = document.querySelector('.overlay');
+			const body = document.body;
+
+			function toggleMenu() {
+				const isOpen = sidebar?.classList.toggle('active');
+				overlay?.classList.toggle('active');
+				body.classList.toggle('menu-open');
+				menuToggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+			}
+
+			menuToggle?.addEventListener('click', toggleMenu);
+			overlay?.addEventListener('click', toggleMenu);
+
+			document.querySelectorAll('.sidebar-link, .sidebar-cta').forEach(link => {
+				link.addEventListener('click', toggleMenu);
+			});
+		</script>
+	</body>
+</html>
